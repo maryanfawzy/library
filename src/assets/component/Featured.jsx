@@ -4,8 +4,7 @@ import Book from "./ui/Book";
 import {books} from "./data"
 
 const Featured = () =>{
-    console.log()
-    function getFiveStarBooks(){}
+    
     return(
         <section id="features">
             <div className="container">
