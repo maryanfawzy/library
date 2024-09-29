@@ -1,6 +1,7 @@
-git addEventListener.applyimport React from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 const Book = ({ book }) => {
   if (!book) return null;  
   return (
@@ -16,9 +17,16 @@ const Book = ({ book }) => {
         </a>
       </div>
       <div className="book__ratings">
-        {new Array(5).fill(0).map((_, index) => (
-          <FontAwesomeIcon icon={faStar}/>
+        {
+        new Array(Math.floor(book.rating)).fill(0).map((_, index) => (
+          <FontAwesomeIcon icon= "star" key={index}/>
         ))}
+        {
+          Number.isInteger(book.rating) ? "" :
+          <FontAwesomeIcon icon= "star-half-alt"/>
+
+
+        }
       </div>
       <div className="book__price">
       {book.salePrice ? (
