@@ -1,11 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
-import {Link} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import Ratings from '../assets/component/ui/Raiting';
 import Price from '../assets/component/ui/Price';
+import Book from '../assets/component/ui/Book';
+import { books } from '../assets/component/data';
 
 
  const BookInfo =({ books})=> {
+    const{id} =  useParams();
+    const book = books.find( book => +book.id === +id )
   return (
     <div id='books__body'>
         <main id='books__main'>
@@ -21,17 +25,18 @@ import Price from '../assets/component/ui/Price';
                     </div>
                     <div className="book__selected">
                         <figure className="book__selected--figure">
-                            <img src="" alt="" className="book__selected--img" />
+                            <img src={book.url} alt="" className="book__selected--img" />
                         </figure>
                         <div className="book__selected--description"><h2 className='book__selected--title'>
+                            {book.title}
                             </h2>
-                            <Ratings rating=""/>
+                            <Ratings rating={book.rating}/>
                             <div className="book__selected--price">
                                 <Price salePrice={books.salePrice} originalPrice={books.originalPrice}/>
                             </div>
                             <div className="book__summary">
                                 <div className="book__summary--title">Summary</div>
-                                <p className="booksummary--para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos incidunt adipisci officia ad ducimus aut deserunt architecto. Qui itaque quibusdam ullam error ab eaque a consectetur. Sequi unde eos reprehenderit.</p>
+                                <p className="book__summary--para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos incidunt adipisci officia ad ducimus aut deserunt architecto. Qui itaque quibusdam ullam error ab eaque a consectetur. Sequi unde eos reprehenderit.</p>
                             </div>
                             <button className='btn'>Add to the Cart
 
@@ -46,6 +51,13 @@ import Price from '../assets/component/ui/Price';
                                 Recommended Books
                             </h2>
                         </div>
+                        <div className='books'>
+                        {books.filter
+                        (book=>book.rating ===5 
+                            && +book.id !== +id)
+                        .slice(0,4)
+                        .map(book=><Book book ={book} key = {book.id} />)}
+                    </div>
                     </div>
                 </div>
             </div>
