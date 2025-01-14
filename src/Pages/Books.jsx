@@ -14,7 +14,7 @@ import Book from '../assets/component/ui/Book';
                 setBooks(books.slice().sort((a,b)=>(b.salePrice||b.originalPrice)-(a.salePrice||a.originalPrice)))
             
             if (filter ==="raiting"){
-                setBooks(books.slice().sort((a, b)=>b.Raiting - a.Raiting))
+                setBooks(books.slice().sort((a, b)=>b.rating - a.rating))
             }
         }}
   return (
