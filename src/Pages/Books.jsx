@@ -3,7 +3,7 @@ import { books } from '../assets/component/data';
 import Book from '../assets/component/ui/Book';
 
     //  const Books({books: initalBooks})=> {
-    //  const [book, setBooks]=useState(initalBooks)}
+    //  const [books, setBooks]=useState(initalBooks)}
      const Books = ({ books: initalBooks }) => {
          const [book, setBooks] = useState();
         function filterBooks (filter){
